@@ -175,7 +175,7 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "https://docs.google.com/spreadsheets/d/1XcfcK3mDljyTlux6XOlzYk9ZMQmHa0TWUMgfRek5Bcc/edit?gid=0#gid=0",
+          "value": "https://docs.google.com/spreadsheets/d/SEU_ID_DA_PLANILHA/edit",
           "mode": "url"
         },
         "sheetName": {
@@ -183,7 +183,7 @@
           "value": "gid=0",
           "mode": "list",
           "cachedResultName": "Página1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1XcfcK3mDljyTlux6XOlzYk9ZMQmHa0TWUMgfRek5Bcc/edit#gid=0"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/SEU_ID_DA_PLANILHA/edit#gid=0"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -324,7 +324,7 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "https://docs.google.com/spreadsheets/d/1XcfcK3mDljyTlux6XOlzYk9ZMQmHa0TWUMgfRek5Bcc/edit?gid=0#gid=0",
+          "value": "https://docs.google.com/spreadsheets/d/SEU_ID_DA_PLANILHA/edit",
           "mode": "url"
         },
         "sheetName": {
@@ -332,7 +332,7 @@
           "value": "gid=0",
           "mode": "list",
           "cachedResultName": "Página1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1XcfcK3mDljyTlux6XOlzYk9ZMQmHa0TWUMgfRek5Bcc/edit#gid=0"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/SEU_ID_DA_PLANILHA/edit#gid=0"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -426,7 +426,7 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "https://docs.google.com/spreadsheets/d/1XcfcK3mDljyTlux6XOlzYk9ZMQmHa0TWUMgfRek5Bcc/edit?gid=0#gid=0",
+          "value": "https://docs.google.com/spreadsheets/d/SEU_ID_DA_PLANILHA/edit",
           "mode": "url"
         },
         "sheetName": {
@@ -434,7 +434,7 @@
           "value": "gid=0",
           "mode": "list",
           "cachedResultName": "Página1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1XcfcK3mDljyTlux6XOlzYk9ZMQmHa0TWUMgfRek5Bcc/edit#gid=0"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/SEU_ID_DA_PLANILHA/edit#gid=0"
         },
         "columns": {
           "mappingMode": "defineBelow",

@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1460 650" width="1460" height="650" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <title id="t">Workflow n8n: Triagem Inteligente de E-mails</title>
+  <desc id="d">Gmail Trigger verifica e-mails não lidos a cada minuto. O nó AI Agent "Triagem com IA" usa o modelo Groq LLaMA 3.3 70B e um Structured Output Parser para devolver classificação e resposta. Um Switch roteia para três nós Google Sheets (Dúvida, Reclamação, Elogio), que convergem para Gmail Reply e depois Gmail Mark as Read.</desc>
+  <defs>
+    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#d5d7de"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#9097a3"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#1b1d24" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .node { fill: #ffffff; stroke: #c8ccd6; stroke-width: 1.5; filter: url(#shadow); }
+      .edge { fill: none; stroke: #9097a3; stroke-width: 2; }
+      .sub  { fill: none; stroke: #9097a3; stroke-width: 2; stroke-dasharray: 6 5; }
+      .port { fill: #ffffff; stroke: #9097a3; stroke-width: 2; }
+      .label, .type, .out, .hint { paint-order: stroke; stroke: #f6f7f9; stroke-width: 6px; stroke-linejoin: round; }
+      .label { font-size: 15px; font-weight: 600; fill: #2d2f36; text-anchor: middle; }
+      .type  { font-size: 12.5px; fill: #7b7f8a; text-anchor: middle; }
+      .out   { font-size: 12.5px; fill: #5c606b; }
+      .hint  { font-size: 12px; fill: #8a8e98; font-style: italic; }
+    </style>
+  </defs>
+
+  <!-- Canvas -->
+  <rect width="1460" height="650" rx="14" fill="#f6f7f9"/>
+  <rect width="1460" height="650" rx="14" fill="url(#dots)"/>
+  <rect x="0.75" y="0.75" width="1458.5" height="648.5" rx="14" fill="none" stroke="#dfe2e8" stroke-width="1.5"/>
+  <text x="32" y="44" font-size="18" font-weight="700" fill="#2d2f36">Triagem Inteligente de E-mails</text>
+  <text x="32" y="66" font-size="13" fill="#7b7f8a">n8n · 10 nós · Gmail → IA (Groq) → Google Sheets → resposta automática</text>
+
+  <!-- ===== Edges (main) ===== -->
+  <!-- Trigger -> Agent -->
+  <path class="edge" d="M150 317 C 200 317, 230 317, 278 317" marker-end="url(#arrow)"/>
+  <!-- Agent -> Switch -->
+  <path class="edge" d="M484 317 C 540 317, 580 317, 630 317" marker-end="url(#arrow)"/>
+  <!-- Switch outputs -> Sheets -->
+  <path class="edge" d="M726 294 C 790 294, 790 125, 854 125" marker-end="url(#arrow)"/>
+  <path class="edge" d="M726 317 C 790 317, 800 317, 854 317" marker-end="url(#arrow)"/>
+  <path class="edge" d="M726 340 C 790 340, 790 509, 854 509" marker-end="url(#arrow)"/>
+  <!-- Sheets -> Reply -->
+  <path class="edge" d="M950 125 C 1020 125, 1010 317, 1078 317" marker-end="url(#arrow)"/>
+  <path class="edge" d="M950 317 C 1000 317, 1030 317, 1078 317" marker-end="url(#arrow)"/>
+  <path class="edge" d="M950 509 C 1020 509, 1010 317, 1078 317" marker-end="url(#arrow)"/>
+  <!-- Reply -> Mark as read -->
+  <path class="edge" d="M1174 317 C 1220 317, 1250 317, 1302 317" marker-end="url(#arrow)"/>
+
+  <!-- ===== Edges (AI sub-nodes) ===== -->
+  <path class="sub" d="M334 362 L 334 476"/>
+  <path class="sub" d="M434 362 L 434 476"/>
+
+  <!-- ===== 1. Gmail Trigger ===== -->
+  <path class="node" d="M105 272 H150 Q156 272 156 278 V356 Q156 362 150 362 H105 A45 45 0 0 1 105 272 Z"/>
+  <g transform="translate(86 302)">
+    <rect width="38" height="28" rx="3" fill="#ffffff" stroke="#d0d4dc"/>
+    <path d="M2 3 L19 16 L36 3" fill="none" stroke="#ea4335" stroke-width="3.2" stroke-linejoin="round"/>
+  </g>
+  <path d="M68 280 l-7 13 h6 l-4 11 l11 -15 h-6 l4 -9 z" fill="#ff6d5a"/>
+  <circle class="port" cx="156" cy="317" r="5"/>
+  <text class="label" x="105" y="388">Novo E-mail Recebido</text>
+  <text class="type" x="105" y="406">Gmail Trigger · a cada minuto</text>
+
+  <!-- ===== 2. AI Agent ===== -->
+  <rect class="node" x="284" y="272" width="200" height="90" rx="8"/>
+  <g transform="translate(300 296)">
+    <rect x="0" y="6" width="36" height="28" rx="7" fill="#efeaff" stroke="#7a5af8" stroke-width="2"/>
+    <circle cx="11" cy="20" r="3.2" fill="#7a5af8"/>
+    <circle cx="25" cy="20" r="3.2" fill="#7a5af8"/>
+    <line x1="18" y1="6" x2="18" y2="0" stroke="#7a5af8" stroke-width="2"/>
+    <circle cx="18" cy="0" r="2.6" fill="#7a5af8"/>
+  </g>
+  <text x="346" y="313" font-size="15" font-weight="600" fill="#2d2f36">Triagem com IA</text>
+  <text x="346" y="332" font-size="12.5" fill="#7b7f8a">AI Agent</text>
+  <circle class="port" cx="284" cy="317" r="5"/>
+  <circle class="port" cx="484" cy="317" r="5"/>
+  <!-- sub ports -->
+  <path d="M334 356 l6 6 l-6 6 l-6 -6 z" fill="#ffffff" stroke="#9097a3" stroke-width="2"/>
+  <path d="M434 356 l6 6 l-6 6 l-6 -6 z" fill="#ffffff" stroke="#9097a3" stroke-width="2"/>
+  <text class="hint" x="342" y="392">Chat Model</text>
+  <text class="hint" x="442" y="392">Output Parser</text>
+
+  <!-- ===== 3. Groq (sub-node) ===== -->
+  <circle class="node" cx="334" cy="514" r="38"/>
+  <g transform="translate(316 496)">
+    <rect width="36" height="36" rx="8" fill="#fff1ec" stroke="#f55036" stroke-width="2"/>
+    <text x="18" y="24" font-size="13" font-weight="700" fill="#f55036" text-anchor="middle">LLM</text>
+  </g>
+  <text class="label" x="334" y="574">Groq (LLaMA 3.3)</text>
+  <text class="type" x="334" y="592">llama-3.3-70b · temp 0.4</text>
+
+  <!-- ===== 4. Structured Output Parser (sub-node) ===== -->
+  <circle class="node" cx="434" cy="514" r="38"/>
+  <text x="434" y="523" font-size="22" font-weight="700" fill="#4b5563" text-anchor="middle">{ }</text>
+  <text class="label" x="458" y="616">Formato JSON da Triagem</text>
+  <text class="type" x="458" y="634">Structured Output Parser</text>
+  <line x1="434" y1="552" x2="446" y2="600" stroke="#c8ccd6" stroke-width="1"/>
+
+  <!-- ===== 5. Switch ===== -->
+  <rect class="node" x="636" y="272" width="90" height="90" rx="8"/>
+  <g transform="translate(661 297)" fill="none" stroke="#2f80ed" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 20 H14"/>
+    <path d="M14 20 C 22 20, 22 4, 34 4"/>
+    <path d="M14 20 H34"/>
+    <path d="M14 20 C 22 20, 22 36, 34 36"/>
+    <path d="M30 0 l4 4 l-4 4"/>
+    <path d="M30 16 l4 4 l-4 4"/>
+    <path d="M30 32 l4 4 l-4 4"/>
+  </g>
+  <circle class="port" cx="636" cy="317" r="5"/>
+  <circle class="port" cx="726" cy="294" r="5"/>
+  <circle class="port" cx="726" cy="317" r="5"/>
+  <circle class="port" cx="726" cy="340" r="5"/>
+  <text class="label" x="681" y="388">Rotear por Categoria</text>
+  <text class="type" x="681" y="406">Switch · 3 saídas</text>
+
+  <!-- ===== 6-8. Google Sheets ===== -->
+  <g id="sheets">
+    <rect class="node" x="860" y="80" width="90" height="90" rx="8"/>
+    <rect class="node" x="860" y="272" width="90" height="90" rx="8"/>
+    <rect class="node" x="860" y="464" width="90" height="90" rx="8"/>
+  </g>
+  <g fill="#0f9d58">
+    <rect x="889" y="105" width="32" height="40" rx="3"/>
+    <rect x="889" y="297" width="32" height="40" rx="3"/>
+    <rect x="889" y="489" width="32" height="40" rx="3"/>
+  </g>
+  <g stroke="#ffffff" stroke-width="2">
+    <path d="M895 117 H915 M895 125 H915 M895 133 H915 M905 117 V139"/>
+    <path d="M895 309 H915 M895 317 H915 M895 325 H915 M905 309 V331"/>
+    <path d="M895 501 H915 M895 509 H915 M895 517 H915 M905 501 V523"/>
+  </g>
+  <g>
+    <circle class="port" cx="860" cy="125" r="5"/><circle class="port" cx="950" cy="125" r="5"/>
+    <circle class="port" cx="860" cy="317" r="5"/><circle class="port" cx="950" cy="317" r="5"/>
+    <circle class="port" cx="860" cy="509" r="5"/><circle class="port" cx="950" cy="509" r="5"/>
+  </g>
+  <text class="label" x="905" y="196">Salvar Duvida</text>
+  <text class="type" x="905" y="214">Google Sheets · append</text>
+  <text class="label" x="905" y="388">Salvar Reclamacao</text>
+  <text class="type" x="905" y="406">Google Sheets · append</text>
+  <text class="label" x="905" y="580">Salvar Elogio</text>
+  <text class="type" x="905" y="598">Google Sheets · append</text>
+
+  <!-- Switch output labels (drawn after the edges so they sit on top) -->
+  <text class="out" x="752" y="236">Duvida</text>
+  <text class="out" x="752" y="309">Reclamacao</text>
+  <text class="out" x="752" y="408">Elogio</text>
+
+  <!-- ===== 9. Gmail Reply ===== -->
+  <rect class="node" x="1084" y="272" width="90" height="90" rx="8"/>
+  <g transform="translate(1110 303)">
+    <rect width="38" height="28" rx="3" fill="#ffffff" stroke="#d0d4dc"/>
+    <path d="M2 3 L19 16 L36 3" fill="none" stroke="#ea4335" stroke-width="3.2" stroke-linejoin="round"/>
+  </g>
+  <path d="M1146 290 l-8 -6 l8 -6 M1138 284 h10 q6 0 6 6" fill="none" stroke="#5c606b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle class="port" cx="1084" cy="317" r="5"/>
+  <circle class="port" cx="1174" cy="317" r="5"/>
+  <text class="label" x="1129" y="388">Responder E-mail</text>
+  <text class="type" x="1129" y="406">Gmail · reply</text>
+
+  <!-- ===== 10. Gmail Mark as read ===== -->
+  <rect class="node" x="1308" y="272" width="90" height="90" rx="8"/>
+  <g transform="translate(1334 303)">
+    <rect width="38" height="28" rx="3" fill="#ffffff" stroke="#d0d4dc"/>
+    <path d="M2 3 L19 16 L36 3" fill="none" stroke="#ea4335" stroke-width="3.2" stroke-linejoin="round"/>
+  </g>
+  <path d="M1360 293 l4 4 l8 -9" fill="none" stroke="#0f9d58" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle class="port" cx="1308" cy="317" r="5"/>
+  <text class="label" x="1353" y="388">Marcar como Lido</text>
+  <text class="type" x="1353" y="406">Gmail · mark as read</text>
+</svg>
